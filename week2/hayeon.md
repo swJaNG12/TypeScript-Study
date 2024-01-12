@@ -21,25 +21,27 @@
 
 <br/>
 
-### 2.7 타입스크립트에만 있는 타입을 배우자
+## 2.7 타입스크립트에만 있는 타입을 배우자
 
 타입스크립트에는 any처럼 자바스크립트에서는 보지 못한 타입들이 있다.
 (any, unknown , void {} , never 등등) 먼저 any부터 살펴보자.
 
 <br/>
 
-#### 2.7.1 any
+### 2.7.1 any
 
 ```ts
 let str: any = "hello";
 const result = str.toFixed(); // 에러를 표시하지않는다
 ```
 
-위의 예시를 보면 str 문자열을 any로 타입을 지정했더니, toFixed()를 사용했어도 타입 스크립트는 에러를 표시하지 않는다.
+위의 예시를 보면 str 문자열을 any로 타입을 지정했더니, toFixed()를 사용했어도 타입 스크립트는 에러를 표시하지 않는다. <br/>
 왜 그럴까? 타입 스크립트는 any 타입을 쓰면 모든 동작을 허용하기 때문에 타입을 검사하지 못하므로 타입 스크립트를 쓰는 의미가 퇴색된다.
 
-또 any 타입을 통해 파생되는 결과도 any 타입이 된다.
+또 any 타입을 통해 파생되는 결과도 any 타입이 된다. <br/>
 즉 result 변수도 any 타입으로 추론되는 걸 확인할 수 있고, 계속 any 타입이 생성되므로 사용을 지양해야 한다.
+
+<br/>
 
 - 대부분의 경우 타입이 any로 추론되면 다음과 같이 implicitly 에러가 발생한다
 
@@ -49,21 +51,28 @@ function plus(x, y) {
 } //Parameter 'y' implicitly has an 'any' type
 ```
 
-하지만 any여도 에러가 발생하지 않을 때가 있다. 다음 예시를 살펴보자.
+하지만 any여도 에러가 발생하지 않을 때가 있다. 다음 예시를 살펴보자. <br/>
 arr 변수에 타입을 표기하지 않으면 자동으로 any로 추론된다.
+
+
+<br/>
+
 
 ```ts
 const arr = []; // any 타입
 ```
 
-`이와같이 타입스크립트가 any로 추론하는 타입이 있다면 타입을 직접표기해야 한다.`
+`이와같이 타입스크립트가 any로 추론하는 타입이 있다면 타입을 직접표기해야 한다.` <br/>
 any타입은 타입 검사를 포기한다는 선언과 같기때문이다.
+
+
+<br/>
 
 ```ts
 const arr: string[] = []; // string[]타입
 ```
 
-한 가지 신기한 점은 any[]로 추론된 배열에는 push 메서드나 인덱스로 요소를 추가할 때마다 추론하는 타입이 바뀐다는 것이다.
+한 가지 신기한 점은 any[]로 추론된 배열에는 push 메서드나 인덱스로 요소를 추가할 때마다 추론하는 타입이 바뀐다는 것이다. <br/>
 
 ```ts
 const arr = []; // any 타입
@@ -92,7 +101,9 @@ arr2[1] = 3;
 arr2; // (string | number)[]
 ```
 
-- concat은 에러발생
+<br/>
+
+### concat은 에러발생
 
 <br/>
 
@@ -119,7 +130,7 @@ const arr3 = ["123"];
 const arr4 = arr3.concat("123");
 ```
 
-- pop()
+### pop()
   
 <br/>
 
@@ -135,7 +146,7 @@ arr.pop();
 arr; // 여기서 다시 any[]타입으로 돌아가지못한다. -> const arr: string[]타입
 ```
 
-- 문자열 타입과 연산할 때
+###  문자열 타입과 연산할 때
 
 ```ts
 const a: any = "123";
@@ -154,10 +165,11 @@ const st1 = a + "1"; // st1: string
 어떤 값에 연산을 할 때는 숫자로 바뀌므로 number 타입 되고 어떤 값에 문자열을 더하면 string 타입이 된다.
 다만 a가 숫자 면 number이 되지만 a가 문자열이면 string이 되므로 타입스크립트는 그냥 a를 any로 추론한다.
 
-- 타입 스크립트가 명시적으로 any를 반환하는 경우
 
-- 1. JSON.parse , fetch 함수
 
+### 타입스크립트가 명시적으로 any를 반환하는 경우
+
+-   JSON.parse , fetch 함수
 - 타입을 명시하지 않았을 때
 - fetch를 통한 비동기 처리에서는 result의 타입이 명시되지 않아 any로 추론된다.
 
@@ -189,7 +201,7 @@ fetch("url")
 const result: { hello: string } = JSON.parse('{"key": "value"}');
 ```
 
-### 2.7.3 unKnown
+## 2.7.3 unKnown
 <br/>
 unKnown는 any와 비슷하게 모든 타입을 대입할 수 있지만. 그 후 어떤 동작도 수행할 수 없게 된다.
 unknown인 a,b 변수를 사용한 모든 동작이 에러로 처리된다.
@@ -216,7 +228,7 @@ try {
 ```
 
 타입스크립트에서는 catch (e)를 사용하여 오류를 잡을 때 잡힌 변수 e의 타입이 암묵적으로 unknown으로 설정된다.
-타입스크립트 컴파일러가 잡힌 오류 객체의 타입을 정적으로 결정할 수 없기 때문이다.
+타입스크립트 컴파일러가 잡힌 오류 객체의 타입을 정적으로 결정할 수 없기 때문이다. <br/>
 
 catch문의 e에는 any와 unknown 외엔 다른 타입을 직접 표기할 수 없기 때문에 `as`로 타입을 주장할 수 있다.
 
@@ -236,8 +248,10 @@ const a: number = "123" as number;
 
 //Conversion of type 'string' to type 'number' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
 ```
+
 <br/>
--> 강제로 바꾸는 법
+
+####  강제로 바꾸는 법
 먼저 unknown으로 주장후 원하는 타입을 다시 주장하면된다.
 다만 강제로 주장한 것에대해 as를 사용할 때는 자신이 책임을 져야한다..
 
@@ -264,9 +278,10 @@ function a(param: string | null | undefined) {
   param!.slice(3); // 여기 ! 붙임
 }
 ```
+<br/> 
 
-### 2.7.3 void
-<br/>
+## 2.7.3 void
+
 - 첫번째 예시
 
 ```ts
@@ -315,13 +330,15 @@ const func3: () => void | undefined = () => 3;
 });
 ```
 
-- 정리하면 void는 두 가지 목적을 위해 사용된다.
+#### 정리하면 void는 두 가지 목적을 위해 사용된다.
 
-`1. 사용자가 함수의 반환값을 사용하지 못하도록 제한한다.`
-`2. 반환값을 사용하지 않는 콜백 함수를 타이필할 때 사용한다.`
+##### `1. 사용자가 함수의 반환값을 사용하지 못하도록 제한한다.`
+#####  `2. 반환값을 사용하지 않는 콜백 함수를 타이필할 때 사용한다.`
 <br/>
-### 2.7.4 {}, Object
+
+## 2.7.4 {}, Object
 <br/>
+
 `null 과 undefined를 제외한 모든 값을 의미한다.`
 
 - unknown 타입을 if문을 통해 검증해 보면 { } 타입이 나온다.
@@ -354,7 +371,7 @@ if (unk) {
 
 <br/>
 
-### 2.8 타입 별칭으로 타입에 이름을 붙이자
+## 2.8 타입 별칭으로 타입에 이름을 붙이자
 <br/>
 
 ```ts
