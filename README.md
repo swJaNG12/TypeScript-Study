@@ -12,8 +12,8 @@
 |------|---|
 |[1주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week1)|  2장 ~ 2.6장|테스트3|
 |[2주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week2)|2.7장 ~ 2.8장|테스트3|
-|3주차|2.9장 ~ 2.13장|테스트3|
-|4주차||테스트3|
+|[3주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week3)|2.9장 ~ 2.13장|테스트3|
+|4주차|2.14장 ~ 2.18장 |테스트3|
 |5주차||테스트3|
 |6주차||테스트3|
 |7주차||테스트3|
