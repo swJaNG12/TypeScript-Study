@@ -40,7 +40,7 @@ const arr: Arr = ["3", "5", "6"];
 ```ts
 interface Func {
   (x: number, y: number): number;
-}
+} //
 
 const add: Func = (x, y) => x + y;
 ```
