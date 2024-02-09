@@ -1078,11 +1078,10 @@ type Removed = RemoveX<"xxtestxx">; //type Removed = "test"
 2. RemoveX<"xtestxx">
    1단계와 같은 이유로 Remove<'testxx'>가 된다.
 3. Remove<"testxx">
-
-이제 좌측에 x가 전부 지워졌으니Str extends `${infer Rest}x`로 평가된다.
-testxx는 x로 끝나는 문자열이므로 true가 되고, Rest는 testx가 된다.
-그러면 RemoveX<"testx">가 수행된다. 4.
-4.RemoveX<"testx">
-3단계와 같은 이유로 RemoveX<"test">가 된다. 5. RemoveX<"test">
-
-Str extends `x${infer Rest}`, Str extends `${infer Rest}x` 둘다 false 이므로 자기 자신이 Str이 된다.
+   이제 좌측에 x가 전부 지워졌으니Str extends `${infer Rest}x`로 평가된다.
+   testxx는 x로 끝나는 문자열이므로 true가 되고, Rest는 testx가 된다.
+   그러면 RemoveX<"testx">가 수행된다.
+4. RemoveX<"testx">
+   3단계와 같은 이유로 RemoveX<"test">가 된다.
+5. RemoveX<"test">
+   Str extends `x${infer Rest}`, Str extends `${infer Rest}x` 둘다 false 이므로 자기 자신이 Str이 된다.
