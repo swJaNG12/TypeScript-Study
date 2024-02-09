@@ -8,15 +8,15 @@
 
 #### 스터디 일정
 
-|주차|목차|
-|------|---|
-|[1주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week1)|  2장 ~ 2.6장|테스트3|
-|[2주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week2)|2.7장 ~ 2.8장|테스트3|
-|[3주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week3)|2.9장 ~ 2.13장|테스트3|
-|4주차|2.14장 ~ 2.18장 |테스트3|
-|5주차||테스트3|
-|6주차||테스트3|
-|7주차||테스트3|
+| 주차                                                                  | 목차            |     |
+| --------------------------------------------------------------------- | --------------- | --- |
+| [1주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week1) | 2장 ~ 2.6장     |     |
+| [2주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week2) | 2.7장 ~ 2.8장   |     |
+| [3주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week3) | 2.9장 ~ 2.13장  |     |
+| [4주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week4) | 2.14장 ~ 2.18장 |     |
+| [5주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week5) | 2.19장 ~ 2.25장 |     |
+| [6주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week6) | 2.26장 ~ 2.32장 |     |
+| 7주차                                                                 |                 |     |
 
 - 매주 금요일 20:00 진행
 
