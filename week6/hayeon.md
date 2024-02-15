@@ -151,8 +151,8 @@ const mile2 = 5 as Mile;
 kmToMile(mile2); //Error : 'Mile' 형식의 인수는 'KM' 형식의 매개 변수에 할당될 수 없습니다. -> mile2는 Mile타입이므로 kmToMile함수 인수로 넣을 수 없다.
 ```
 
-위의 코드와 같이 Brand타입으로 만들어낸 KM타입은 type KM = number & { **brand: "km"} 타입이고 , Mile타입은 type Mile = number & { **brand: "mile" }타입이다.
-앞서 살펴봤던 13절에 따라 number타입에 각자 다른 브랜드 속성을 추가한 것이다.
+위의 코드와 같이 Brand타입으로 만들어낸 KM타입은 `type KM = number & { **brand: "km"}` 타입이고 , Mile타입은 `type Mile = number & { **brand: "mile" }`타입이다.
+앞서 살펴봤던 [13절](https://github.com/swJaNG12/TypeScript-Study/blob/main/week3/hayeon.md#213-%EA%B0%9D%EC%B2%B4-%EA%B0%84%EC%97%90-%EB%8C%80%EC%9E%85%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94%EC%A7%80-%ED%99%95%EC%9D%B8%ED%95%98%EB%8A%94-%EB%B2%95%EC%9D%84-%EB%B0%B0%EC%9A%B0%EC%9E%90)에 따라 number타입에 각자 다른 브랜드 속성을 추가한 것이다.
 이러면 둘다 number로 같은 타입이지만 서로 구별되게 만들 수 있다.
 
 이렇게 브랜딩 기법을 활용하면 타입을 더 정밀하게 활용하면서 안정성도 올라가므로 프로젝트에 적용하는걸 추천한다.
@@ -331,7 +331,7 @@ type R2 = IsSubset<{ name: string; age: number }, { name: string }>;
 type R3 = IsSubset<symbol, unknown>; //type R3 = true
 ```
 
-## Equal
+### Equal
 
 두 타입이 동일한 타입인지 판단한다.
 
@@ -361,7 +361,7 @@ X가 string, Y가 any타입으로 가정하면 T에 여러 타입을 넣어서 �
 | any    | string | number |               1               | 2                             | false   |
 | 1      | number |   2    |               2               | 1                             | false   |
 
-## NotEqual
+### NotEqual
 
 Equal과 반대로 해당 타입이 아닌지 판단하는 타입이다.
 
@@ -542,8 +542,9 @@ declare type T = number;
 | 함수         |              |      |  O  |
 | 변수         |              |      |  O  |
 
-- 네임스페이스로 선언한 것은 네임스페이스면서 값으로 사용할 수 있다.(2.9.2절)
-- 클래스나 enum은 타입으로도, 값으로도 사용할 수도 있다. (2.2절)
+- 네임스페이스로 선언한 것은 네임스페이스면서 값으로 사용할 수 있다.([2.9.2절](https://github.com/swJaNG12/TypeScript-Study/blob/main/week3/hayeon.md#292-%EB%84%A4%EC%9E%84%EC%8A%A4%ED%8E%98%EC%9D%B4%EC%8A%A4))
+- 클래스나 enum은 타입으로도, 값으로도 사용할 수도 있다. ([2.2절](https://github.com/swJaNG12/TypeScript-Study/blob/main/week1/hayeon.md#22-%ED%83%80%EC%9E%85-%EC%B6%94%EB%A1%A0%EC%9D%84-%EC%A0%81%EA%B7%B9-%ED%99%9C%EC%9A%A9%ED%95%98%EC%9E%90)
+  )
   <br>
 
 ### 같은 이름의 다른 선언과 병합 가능 여부
