@@ -491,6 +491,106 @@ type Context = {
 - addInitializer (초기화할 때 실행되는 메서드 )
 
 <br>
+이 속성들을 활용해 장식 대상의 정보를 가져올 수 있다.
+
+```ts
+function startAndEnd(start = "start", end = "end") {
+  return function RealDecorator<This, Args extends any[], Return>(
+    originalMethod: (this: This, ...args: Args) => Return,
+    context: ClassMethodDecoratorContext<
+      This,
+      (this: This, ...args: Args) => Return
+    >
+  ) {
+    function replacementMethod(this: This, ...args: Args): Return {
+      console.log(context.name, start); // 장식 대상의 이름
+      const result = originalMethod.call(this, ...args);
+      console.log(context.name, end);
+      return result;
+    }
+    return replacementMethod;
+  };
+}
+function log<Input extends new (...arg: any[]) => any>(
+  value: Input,
+  context: ClassDecoratorContext
+) {
+  if (context.kind === "class") {
+    return class extends value {
+      constructor(...args: any[]) {
+        super(args);
+      }
+      log(msg: string): void {
+        console.log(msg);
+      }
+    };
+  }
+  return value;
+}
+function bound(
+  originalMethod: unknown,
+  context: ClassMethodDecoratorContext<any>
+) {
+  const methodName = context.name;
+  if (context.kind === "method") {
+    context.addInitializer(function () {
+      this[methodName] = this[methodName].bind(this);
+    });
+  }
+}
+// 클래스 데코래이터
+@log
+export class C {
+  @bound
+  @startAndEnd()
+  eat() {
+    console.log("Eat");
+  }
+  @bound
+  @startAndEnd()
+  work() {
+    console.log("Work");
+  }
+  @startAndEnd("시작", "끝") sleap() {
+    console.log("Sleap");
+  }
+}
+
+class A {
+  @startAndEnd() eat() {
+    console.log("Eat");
+  }
+  @startAndEnd() work() {
+    console.log("Work");
+  }
+  @startAndEnd("시작", "끝") sleap() {
+    console.log("Sleap");
+  }
+}
+const a = new A();
+console.log(a.sleap());
+/*
+sleap 시작
+Sleap
+sleap 끝
+ */
+```
+
+class C의 eat이나 work 데코레이터처럼 여러 개 붙일 수도 있다.
+
+<br>
+다음은 올바른 데코레이터 예시이다.
+클래스 데코레이터의 경우 export나 export default 앞이나 뒤에 데코레이터를 붙일 수 있고, 동시에 붙일 순 없다.
+
+```ts
+@Log
+export class C {}
+export
+@Log
+class C {}
+@Log
+export class C {}
+```
 
 ## 2.32 엠비언트 선언도 선언 병합이 된다
 
