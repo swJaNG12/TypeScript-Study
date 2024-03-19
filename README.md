@@ -19,8 +19,11 @@
 |  [7주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week7)  |  3.1장 ~ 3.7장  |
 |  [8주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week8)  | 3.8장 ~ 3.11장  |
 |  [9주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week9)  |  5.1장 ~ 5.4장  |
-| [10주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week10) |                 |
-| [11주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week11) |                 |
+| [10주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week10) |  6.1장 ~ 6.3장  |
+| [11주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week11) | 7.1장 ~ 7.1.4장 |
+| [12주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week12) |                 |
+| [13주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week13) |                 |
+| [14주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week14) |                 |
 
 - 매주 금요일 20:00 진행
 
