@@ -8,6 +8,8 @@
 - [7.1.3 useEffect](#713-useeffect)
 - [7.1.4 useMemo , useCallback](#714-usememo--usecallback)
 
+<br>
+
 # 7장 React 타입 분석하기
 
 이번 장에선 React 라이브러리의 타입을 분석해 보자. 먼저 React가 타입스크립트를 지원하는지 npmjs.com에서 패키지를 검색해 보면 이름 우측에 DT가 표시되어 있다.
@@ -50,6 +52,8 @@ import { useState, useCallback, useRef, useEffect } from "react";
 ```
 
 `export as namespace React`의 역할은 UMD 모듈을 위한 것으로 UMD 모듈은 스크립트 파일과 모듈 파일에서 모두 사용할 수 있어야 한다.
+
+<br>
 
 ```tsx
 import React, { useState, useCallback, useRef, useEffect } from "react";
@@ -116,6 +120,8 @@ export default WordRelay;
 
 이렇게 변경하면 타입스크립트에서 알아서 \_jsx를 import 하기 때문에 에러가 발생하지 않는다.
 
+<br>
+
 # 7.1 React Hooks 분석하기
 
 # 7.1.1 useState
@@ -142,7 +148,7 @@ const [result, setResult] = useState("");
 현재 useState는 모두 매개변수가 문자열이므로 S는 string이 되고, value도 string으로 타이핑된다.
 setWord, setValue, setResult는 모두 `React.Dispatch<React.SetStateAction<string>>` 타입이다.
 
-### Dispatch
+## Dispatch
 
 ```ts
 type SetStateAction<S> = S | ((prevState: S) => S);
@@ -154,7 +160,7 @@ type Dispatch<A> = (value: A) => void;
 
 반면, useState의 두 번째 오버로딩은 어떤 경우에 사용할까?
 
-- `매개변수가 없을 때` 타입
+- 매개변수가 없을 때 타입
 
 ```ts
 function useState<S = undefined>(): [
@@ -175,6 +181,8 @@ const [value, setValue] = useState<string>(); //const value: string | undefined
 
 이렇게 표기해도 value의 타입은 string | undefined이 되므로 undefined인 경우를 잘 처리해야 한다.
 
+<br>
+
 # 7.1.2 useRef
 
 ```ts
@@ -185,7 +193,7 @@ function useRef<T = undefined>(): MutableRefObject<T | undefined>;
 
 useRef 타입도 세 가지 오버로딩이 존재한다. 먼저 MutableRefObject, RefObject 타입부터 알아보자.
 
-### MutableRefObject, RefObject
+## MutableRefObject, RefObject
 
 ```ts
 interface MutableRefObject<T> {
@@ -218,7 +226,7 @@ return (
 useRef의 인수를 제공하지 않으면 inputEl는 MutableRefObject<undefined\>타입이 되고, 에러 메시지를 통해 ref 속성에는 `LegacyRef<HTMLInputElement> | undefined` 타입이 들어와야 알아냈다. <br> 즉 `MutableRefObject<undefined>`를 `LegacyRef<HTMLInputElement>`에 대입할 수 없기 때문에 에러가 발생하는 것이다.
 그럼 LegacyRef은 뭘까?
 
-### LegacyRef
+## LegacyRef
 
 ```ts
 interface RefAttributes<T> extends Attributes {
@@ -270,13 +278,15 @@ RefObject<HTMLInputElement\>이 된다.
 따라서 input은 inputEl.current가 된다. 그냥 useRef(null)만 하면 inputEl.current가 null이 되어 input.focus()에 에러가 발생했지만, useRef<HTMLInputElement\>(null); 이렇게 바꾸면 inputEl.current는 HTMLInputElement 또는 null이 된다.
 또한, input을 if 을 통해 타입 좁히기가 되어 null이 아니므로 HTMLInputElement가 되고, focus 메서드를 사용할 수 있게 된 것이다.
 
+<br>
+
 # 7.1.3 useEffect
 
 ```ts
 function useEffect(effect: EffectCallback, deps?: DependencyList): void;
 ```
 
-### EffectCallback, DependencyList
+## EffectCallback, DependencyList
 
 ```ts
 type DependencyList = readonly unknown[];
@@ -285,7 +295,7 @@ type EffectCallback = () => void | Destructor;
 
 EffectCallback은 void나 Destructor을 반환하는 함수이고, DependencyList는 unknown 요소인 readonly 배열이다.
 
-### Destructor
+## Destructor
 
 ```ts
 declare const UNDEFINED_VOID_ONLY: unique symbol;
@@ -311,6 +321,8 @@ useEffect(() => {
 하지만 () => void | { [UNDEFINED_VOID_ONLY]: never }이렇게 한 이유는 바로 strictNullChecks 옵션을 사용하지 않는 경우를 대비하기 위해서이다.
 strictNullChecks 옵션을 비활성화하면 그냥 void와 같아진다. 그럼 반환값의 무시하고, 어떠한 값이든 반환값으로 사용할 수 있게 되므로 () => void | { [UNDEFINED_VOID_ONLY]: never }를 사용하는 것이다. <br>
 즉, 모든 경우에서 void와 undefined를 제외한 값을 반환값으로 쓰지 못하게 하는 기법이다.
+
+<br>
 
 # 7.1.4 useMemo , useCallback
 
