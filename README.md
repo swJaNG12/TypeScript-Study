@@ -21,7 +21,7 @@
 |  [9주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week9)  |  5.1장 ~ 5.4장  |
 | [10주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week10) |  6.1장 ~ 6.3장  |
 | [11주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week11) | 7.1장 ~ 7.1.4장 |
-| [12주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week12) |                 |
+| [12주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week12) |  7.2장 ~ 7.4장  |
 | [13주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week13) |                 |
 | [14주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week14) |                 |
 
