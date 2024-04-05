@@ -9,16 +9,15 @@
 
 - [7.2 JSX 타입 이해하기](#72-jsx-타입-이해하기)
 - [7.3 React 직접 타이핑하기](#73-react-직접-타이핑하기)
-  - [](#731-usestate-useref-타이핑)
-    - [](#usestate-타이핑)
-    - [](#useref-타이핑)
-  - [](#732-useeffect-usecallback-타이핑)
-    - [](#useeffect-타이핑)
-    - [](#usecallback-타이핑)
-  - [](#733-changeevent-formevent-타이핑)
-    - [](#changeevent-타이핑)
-    - [](#formevent-타이핑)
-- [7.4 js 파일 생성하기](#74-js-파일-생성하기)
+  - [7.3.1 useState, useRef 타이핑](#731-usestate-useref-타이핑)
+    - [useState 타이핑](#usestate-타이핑)
+    - [useRef 타이핑](#useref-타이핑)
+  - [7.3.2 useEffect, useCallback 타이핑](#732-useeffect-usecallback-타이핑)
+    - [useEffect 타이핑](#useeffect-타이핑)
+    - [useCallback 타이핑](#usecallback-타이핑)
+  - [7.3.3 ChangeEvent, FormEvent 타이핑](#733-changeevent-formevent-타이핑)
+    - [ChangeEvent 타이핑](#changeevent-타이핑)
+    - [FormEvent 타이핑](#formevent-타이핑)
 
 <br>
 
