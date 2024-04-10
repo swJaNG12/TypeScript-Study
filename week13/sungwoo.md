@@ -209,7 +209,7 @@ RequestListener 타입이 (req, res) => {} 함수 부분잉라는 것을 알 수
 
 <br>
 
-이번에는 res의 속성인 writeHead, end의 타입을 보겠습니다.
+이번에는 res의 속성인 writeHead, end의 타입입니다.
 
 ```ts
 declare module "http" {
