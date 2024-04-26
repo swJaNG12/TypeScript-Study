@@ -26,7 +26,7 @@
 | [14주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week14) |   9장 ~ 9.2장   |
 | [15주차](https://github.com/swJaNG12/TypeScript-Study/tree/main/week15) |  10장 ~ 10.4장  |
 
-- 매주 금요일 20:00 진행
+수고했어~~ 👏🙌
 
 #### 참고자료
 
